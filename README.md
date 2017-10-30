@@ -15,7 +15,7 @@ Getting started
 ---------------
 Fork this project.
 
-Task #1
+Exercise #1
 -----------
 Create a full width page with a header, a footer and a main section in index.html. Set the width of the content section to 100% with a maximum width of 1366 pixels.
 
@@ -28,13 +28,13 @@ index.html should include these assets:
 
 In the header, content and footer sections of index.html build the included design. (exercise #1.jpg)
 
-Task #2
+Exercise #2
 -----------
 Create the roll over state as shown in the design. (exercise #2.jpg) 
 
-Task #3
+Exercise #3
 -----------
-Create a modal which is launched when post box is clicked (exercise #3.jpg).
+Create a modal which is launched when a post is clicked (exercise #3.jpg).
 
 Finish up
 ---------
