@@ -4,10 +4,12 @@ UI exercise
 Overview
 --------
 
-We are interested in your approach to the following project. Each of the given tasks have a handful of valid solutions, and possibly other solutions we haven't seen, so don't worry about finding "the" solution. It should render correctly in all major browsers and devices, and be responsive from mobile to desktop.
+We are interested in your approach to the following project. Each of the given exercises have a handful of valid solutions, and possibly other solutions we haven't seen, so don't worry about finding "the" solution. It should render correctly in all major browsers and devices, and be responsive from mobile to desktop.
 
-Try to create your HTML as pixel perfect as possible but we understand type sizes will not be 100% accurate as working from flat artwork.
-You should try to complete the task in under 1 hour, so plan accordingly and focus on the most important aspects.
+Try to create your HTML as pixel perfect to each jpg as possible but we understand text sizes will not be 100% accurate as working from flat artwork.
+You should try to complete the task within 2 hours, so plan accordingly and focus on the most important aspects.
+
+Please feel free to create and package your project as you see fit.
 
 Getting started
 ---------------
@@ -24,14 +26,15 @@ index.html should include these assets:
 - `test.css`
 - `Nunito` Google font in regular, bold and extra bold weights
 
+In the header, content and footer sections of index.html build the included design. (exercise #1.jpg)
+
 Task #2
 -----------
-
-In the header, content and footer sections of index.html build the included design.
+Create the roll over state as shown in the design. (exercise #2.jpg) 
 
 Task #3
 -----------
-Create the roll over state as shown in the design. 
+Create a modal which is launched when post box is clicked (exercise #3.jpg).
 
 Finish up
 ---------
