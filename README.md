@@ -1,6 +1,20 @@
 UI exercise
 ==============================
 
+build
+--------
+## Requirements ##
+* [node.js](https://nodejs.org/en/)
+* [gulp.js](http://gulpjs.com/)
+* [less](http://lesscss.org)
+
+### Installation ###
+
+* [Clone repository](git clone https://matttunney@bitbucket.org/matttunney/mypersonalself.git)
+* Run from the repository folder in terminal/command line etc run
+`npm start`. This will run npm install and bower install, loading both npm and bower dependencies.
+
+
 Overview
 --------
 
@@ -30,7 +44,7 @@ In the header, content and footer sections of index.html build the included desi
 
 Exercise #2
 -----------
-Create the roll over state as shown in the design. (exercise #2.jpg) 
+Create the roll over state as shown in the design. (exercise #2.jpg)
 
 Exercise #3
 -----------
