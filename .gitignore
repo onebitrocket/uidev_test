@@ -1,0 +1,8 @@
+.DS_Store
+*.LCK
+*.log
+/build
+/dist
+/node_modules
+/bower_components
+/.gulp/

@@ -1,0 +1,129 @@
+// Framework grid generation
+.make-grid-columns(@ds,@fl) {
+  // Common styles for all sizes of grid columns
+  .col(@index) when (@index = 1) and (@ds = 0) { // initial
+    @item: ~".col@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @columns) and (@ds = 0) { // general; "=<" isn't a typo
+    @item: ~".col@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index) when (@index = 1) and not (@ds = 0) { // initial
+    @item: ~".col@{index}-@{ds}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @columns)  and not (@ds = 0) { // general; "=<" isn't a typo
+    @item: ~".col@{index}-@{ds}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @columns) and (@fl = false) { // terminal
+    @{list} {
+      position: relative;
+      // Prevent columns from collapsing when empty
+      .rems(min-height,1);
+      // Inner gutter via padding
+      .rems(padding-left,@column-gutter);
+      .rems(padding-right,@column-gutter );
+    }
+  }
+  .col(@index, @list) when (@index > @columns) and (@fl = true) { // terminal
+    @{list} {
+      float: left;
+    }
+  }
+  .col(1); // kickstart it
+}
+
+.make-column-grid-loop (@ml, @mi:1) when (@mi =< @ml) {
+  @ms: extract(@devices, @mi);
+  .make-grid-columns(@ms,false);
+  .make-column-grid-loop(@ml, (@mi + 1));
+}
+
+// loop through the number of columns
+.col-loop (@c, @ci:1) when (@ci =< @c) {
+  //width
+  .col@{ci} when (@ds = 0) and (@ti = 1){
+    width:percentage((@ci/@c));
+  }
+  .col@{ci}-@{ds} when not (@ds = 0) and (@ti = 1) {
+    width:percentage((@ci/@c));
+  }
+  // push
+  .col0-push when (@ds = 0) and (@ti = 2) and (@ci = 1){
+    left:auto;
+  }
+  .col@{ci}-push when (@ds = 0) and (@ti = 2){
+    left:percentage((@ci/@c));
+  }
+  .col0-@{ds}-push when not (@ds = 0) and (@ti = 2) and (@ci = 1){
+    left:auto;
+  }
+  .col@{ci}-@{ds}-push when not (@ds = 0) and (@ti = 2) {
+    left:percentage((@ci/@c));
+  }
+  // pull
+  .col0-pull when (@ds = 0) and (@ti = 3) and (@ci = 1){
+    right:auto;
+  }
+  .col@{ci}-pull when (@ds = 0) and (@ti = 3){
+    right:percentage((@ci/@c));
+  }
+  .col0-@{ds}-pull when not (@ds = 0) and (@ti = 3) and (@ci = 1){
+    right:auto;
+  }
+  .col@{ci}-@{ds}-pull when not (@ds = 0) and (@ti = 3) {
+    right:percentage((@ci/@c));
+  }
+  //offset
+  .col0-offset when (@ds = 0) and (@ti = 4) and (@ci = 1){
+    margin-left:0;
+  }
+  .col@{ci}-offset when (@ds = 0) and (@ti = 4){
+    margin-left:percentage((@ci/@c));
+  }
+  .col0-@{ds}-offset when not (@ds = 0) and (@ti = 4) and (@ci = 1){
+    margin-left:0;
+  }
+  .col@{ci}-@{ds}-offset when not (@ds = 0) and (@ti = 4) {
+    margin-left:percentage((@ci/@c));
+  }
+  .col-loop(@c, (@ci + 1));
+}
+
+// loop through the colun types and run the colunm loop
+.type-loop(@tl, @ti:1) when (@ti =< @tl) {
+  @tn: extract(@types, @ti);
+  .col-loop(@columns);
+  .type-loop(@tl, (@ti + 1));
+}
+
+// generate the breakpoint loop mixin with guards
+.breakpoint-loop(@ds) when (@ds = 0) {
+  //generates base column classes
+  .make-grid-columns(0,false);
+  //generates base column classes for each device
+  .make-column-grid-loop(length(@devices));
+  //generates float classes
+  .make-grid-columns(0, true);
+  // generates the column type classes
+  .type-loop(length(@types));
+}
+.breakpoint-loop(@ds) when not (@ds = 0) {
+  @media screen and (min-width: ~'@{bp}px') {
+    //generates float classes
+    .make-grid-columns(@ds, true);
+    .type-loop(length(@types));
+  }
+}
+.breakpoint-loop(0);
+
+// loop through the device size names
+.devices-loop (@dl, @di:1) when (@di =< @dl) {
+  @ds: extract(@devices, @di);
+  @bp: extract(@breakpoints, @di);
+  .breakpoint-loop(@ds);
+  .devices-loop(@dl, (@di + 1));
+}
+.devices-loop(length(@devices));

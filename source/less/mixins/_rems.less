@@ -1,0 +1,27 @@
+// generate rem and px fallback of any property
+.remUnit(@r) when not (isnumber(@r)) { // not a number
+  @{property}+_: @r;
+}
+.remUnit(@r) when (isnumber(@r)) and (@r > 0) or (isnumber(@r)) and (@r < 0) {
+  @rem-value: @r / @root-font-size;
+//    .ie8 & {
+//      @{property}: ~'@{r}px';
+//    }
+  @{property}+_: unit(@rem-value, rem);
+}
+.remUnit(@r) when (isnumber(@r)) and (@r = 0) {
+  @{property}+_: @r;
+}
+
+.rems(@property, @rest) {
+  @len: length(@rest); // loop through the device size names
+  .rem-loop (@len, @i: 1) when (@i =< @len) {
+
+    @v: extract(@rest, @i);
+
+    .remUnit(@v);
+
+    .rem-loop(@len, (@i + 1));
+  }
+  .rem-loop(@len);
+}

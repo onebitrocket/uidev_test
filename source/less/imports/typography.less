@@ -1,0 +1,59 @@
+/* BASE TYPOGRAPHY */
+h1, h2 {
+  .rems(margin-bottom, 15);
+}
+h3, h4, h5, h6 {
+  .rems(margin-bottom, 10);
+}
+h1 {
+  .font-classes (24,30);
+  .media(1024, {
+    .font-classes (36,42);
+  });
+}
+h2 {
+  .font-classes (20,28);
+  .media(1024, {
+    .font-classes (28,36);
+  });
+}
+h3 {
+  .font-classes (18,24);
+  .media(1024, {
+    .font-classes (21,28);
+  });
+}
+h4  {
+  .font-classes (14,24);
+  .media(1024, {
+    .font-classes (18,28);
+  });
+}
+h5 {
+  .font-classes (14,24);
+}
+h6, label  {
+  .font-classes (12,18);
+}
+
+p {
+  .rems(margin-bottom, 20);
+}
+
+/* LINKS */
+a {
+    color: @link-color;
+    text-decoration: none;
+    &:hover {
+        color: inherit;
+        text-decoration: underline;
+    }
+    &:focus {
+        outline: dotted @link-hover;
+        .rems(outline-width, 1);
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

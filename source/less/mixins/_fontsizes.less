@@ -1,0 +1,5 @@
+// generate rem and px fallback for fontsize and generate unitless line height
+.font-classes(@fontsize, @lineheight) {
+    .rems(font-size, @fontsize);
+    line-height: @lineheight / @fontsize;
+}

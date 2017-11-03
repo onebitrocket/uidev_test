@@ -1,0 +1,50 @@
+/* BASE STRUCTURE */
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  .clearfix();
+}
+.container {
+  margin: 0 auto;
+  position: relative;
+  padding: 0 5%;
+  .clearfix();
+  .media(768, {
+    .rems(padding, 0 23);
+  });
+  .media(1280, {
+    .rems(padding, 0 40);
+  });
+  & > :last-child {
+    margin-bottom: 0;
+  }
+  .wrapper & {
+    .rems(margin-top, 40);
+    .rems(margin-bottom, 40);
+    .media(1024, {
+      .rems(margin-top, 70);
+      .rems(margin-bottom, 70);
+    });
+  }
+}
+
+.fixedwidths(@fwl, @fwi: 1)  when (@fwi =< @fwl) {
+  @fw: extract(@maxwidths, @fwi);
+
+  .fixed-@{fw} {
+    .rems(max-width, @fw);
+    .ie8 & {
+      width: unit(@fw, px);
+    }
+  }
+
+  .fixedwidths(@fwl, (@fwi + 1));
+}
+
+.fixedwidths(length(@maxwidths));
+
+.row {
+  .rems(margin, 0 -@column-gutter);
+  .clearfix();
+}

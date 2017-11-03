@@ -1,0 +1,15 @@
+// Convert hex to rgba, generate tinted fallback
+.rgba(@property, @color, @alpha:1) {
+    @myred:round(red(@color),0);
+    @mygreen:round(green(@color),0);
+    @myblue:round(blue(@color),0);
+    @tintcolor: 1 - @alpha;
+    @{property}:    tint(@color,percentage(@tintcolor));
+    @{property}: ~'rgba(@{myred},@{mygreen},@{myblue},@{alpha})';
+}
+.rgba-color(@color, @alpha:1) {
+  @myred:round(red(@color),0);
+  @mygreen:round(green(@color),0);
+  @myblue:round(blue(@color),0);
+  @rgba-color: ~'rgba(@{myred},@{mygreen},@{myblue},@{alpha})';
+}

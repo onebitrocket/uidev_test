@@ -1,0 +1,139 @@
+// DIVIDERS AND SPACERS
+/*! Helper Classes */
+
+// clearfix
+.clear {
+  .clearfix();
+}
+
+
+// quick floats
+.floatleft() {
+    float:left
+}
+.floatright() {
+    float:right
+}
+.float-left {
+  .floatleft()
+}
+.float-right {
+  .floatright()
+}
+// screen reader and hide text
+.hidetext() {
+    .textwrapnone();
+    overflow:hidden;
+    text-indent:150%;
+}
+.showtext() {
+    .textwrap();
+    overflow:visible;
+    text-indent:initial;
+}
+.screenreader() {
+    display:none;
+}
+.hide-text{
+    .hidetext()
+}
+.show-text{
+    .showtext()
+}
+.screen-reader-text{
+    .screenreader()
+}
+
+/* FONT ADJUSTMENT STYLES */
+.textleft(){
+    text-align: left
+}
+.textright(){
+    text-align: right
+}
+.textcenter(){
+    text-align: center
+}
+.textjustify(){
+    text-align: justify
+}
+.textwrapnone(){
+    white-space: nowrap
+}
+.textwrap(){
+    white-space: normal
+}
+.text-align-left, .alignleft{
+    .textleft();
+}
+.text-align-right, .alignright{
+    .textright();
+}
+.text-align-center, .aligncenter{
+    .textcenter();
+}
+.text-align-justify, .alignjustify{
+    .textjustify();
+}
+.text-wrap-none{
+    .textwrapnone();
+}
+.text-wrap{
+    .textwrap();
+}
+// transformation
+.textlower() {
+    text-transform: lowercase
+}
+.textupper() {
+    text-transform: uppercase
+}
+.textcaps() {
+    text-transform: capitalize
+}
+.text-case-lower{
+    .textlower()
+}
+.text-case-upper{
+    .textupper()
+}
+.text-case-caps{
+    .textcaps()
+}
+// letter spacing
+.letterspacing1(){
+	letter-spacing: 0.005em
+}
+.letterspacing2(){
+	letter-spacing: 0.1em
+}
+.letterspacing3(){
+	letter-spacing: 0.15em
+}
+.letterspacing4(){
+	letter-spacing: 0.2em
+}
+.letterspacing5(){
+	letter-spacing: 0.25em
+}
+.letterspacing0(){
+	letter-spacing: normal
+}
+.letter-spacing-1{
+	.letterspacing1()
+}
+.letter-spacing-2{
+	.letterspacing2()
+}
+.letter-spacing-3{
+	.letterspacing3()
+}
+.letter-spacing-4{
+	.letterspacing4()
+}
+.letter-spacing-5{
+	.letterspacing5()
+}
+.letter-spacing-0{
+	.letterspacing0()
+}

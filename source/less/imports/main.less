@@ -1,0 +1,111 @@
+.pod {
+  .rems(padding, 30 20);
+  background-color: @white;
+  display: block;
+  .rems(margin-bottom,30);
+  &-head {
+    overflow: hidden;
+    .font-classes (30,36);
+    font-weight: 80;
+    .rems(margin-bottom, 20);
+    .rems(padding-bottom, 20);
+    .rems(border-bottom, 1 solid @grey);
+    &:before {
+      display: block;
+      content: '';
+      .rems(border-radius, 50);
+      background-color: @primary-color;
+      .rems(width, 36);
+      .rems(height,36);
+      position: relative;
+      .floatleft();
+      .rems(margin-right,20);
+    }
+  }
+  &-meta {
+    color: @primary-color;
+    .rems(margin-top,10);
+    display: inline-block;
+    .font-classes (14,18);
+    .media(1024, {
+      .floatright();
+      .textright();
+    });
+    .textupper();
+  }
+  &-img {
+    transition: all 0.3s;
+    position: relative;
+    background-color:  @dark-grey;
+    .rems(margin-bottom, 20);
+    & img {
+      transition: all 0.3s;
+      display: block;
+    }
+    &:after {
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      display: block;
+      content: '';
+      z-index: 50;
+      width:0;
+      height:0;
+      position: absolute;
+      transition: all 0.3s;
+      .rems(border-radius, 50);
+      background-color: @primary-color;
+    }
+  }
+  &:hover {
+    cursor: default;
+    cursor: pointer;
+    .pod-img {
+      img {
+        .opacity(0.8);
+      }
+      &:after {
+        transition: all 0.3s;
+        .rems(width, 72);
+        .rems(height, 72);
+      }
+    }
+  }
+}
+
+.modal-inner {
+  .rems(padding, 30 20);
+  background-color: @white;
+  display: block;
+  h2{
+    .font-classes (30,36);
+    font-weight: 80;
+    .rems(margin-bottom, 20);
+    .rems(padding-bottom, 20);
+    .rems(border-bottom, 1 solid @grey);
+    &:before {
+      display: block;
+      content: '';
+      .rems(border-radius, 50);
+      background-color: @primary-color;
+      .rems(width, 36);
+      .rems(height,36);
+      position: relative;
+      .floatleft();
+      .rems(margin-right,20);
+    }
+  }
+  time {
+    color: @primary-color;
+    .floatright();
+    .textright();
+    .textupper();
+    .font-classes (14,18);
+  }
+  img{
+    position: relative;
+    .rems(margin-bottom, 20);
+    max-width: none;
+    width: 100%;
+  }
+}

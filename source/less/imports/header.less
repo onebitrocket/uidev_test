@@ -1,0 +1,30 @@
+/* HEADER */
+.header {
+  .rems(min-height, @header-height);
+  & .container {
+    .rems(margin-top, (@header-height / 5));
+    .rems(margin-bottom, (@header-height / 5));
+    .media(768,{
+      .rems(margin-top, (@header-height / 4));
+      .rems(margin-bottom, (@header-height / 4));
+    });
+    .media(1024,{
+      .rems(margin-top, (@header-height / 4));
+      .rems(margin-bottom, (@header-height / 4));
+    });
+  }
+  &-link {
+    .rems(height, @header-logo-height);
+    .rems(width, @header-logo-height);
+    margin: 0 auto;
+    display: block;
+  }
+  &-logo {
+    display: block;
+    .rems(height, @header-logo-height);
+    .rems(width, @header-logo-height);
+    }
+    &:focus {
+      outline:none;
+    }
+  }

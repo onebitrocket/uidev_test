@@ -1,0 +1,44 @@
+// loop through the column types and run the colunm loop
+.display-type-loop(@dtl, @print, @dti:1) when (@dti =< @dtl) {
+  @dtn: extract(@displaytypes, @dti);
+    .visible-@{dtn} when not (@dtn = none) and (@dds = 0) and (@print = false) {
+      display: @dtn;
+    }
+   .hidden when (@dtn = none) and (@dds = 0) and (@print = false) {
+      display: @dtn;
+    }
+    .visible-@{dds}-@{dtn} when not (@dtn = none) and not (@dds = 0) and (@print = false) {
+      display: @dtn;
+    }
+   .hidden-@{dds} when (@dtn = none) and not (@dds = 0) and (@print = false) {
+      display: @dtn;
+    }
+    .visible-print-@{dtn} when not (@dtn = none) and not (@print = false) {
+      display: @dtn;
+    }
+   .hidden-print when (@dtn = none) and not (@print = false) {
+      display: @dtn;
+    }
+  .display-type-loop(@dtl, @print, (@dti + 1));
+}
+
+// generate the breakpoint loop mixin with guards
+.display-breakpoint-loop(@dds) when (@dds = 0) {
+  .display-type-loop(length(@displaytypes), false);
+}
+.display-breakpoint-loop(@dds) when not (@dds = 0) {
+  @media screen and (min-width: ~'@{dbp}px') {
+    .display-type-loop(length(@displaytypes), false);
+  }  
+}
+.display-breakpoint-loop(0);
+
+// loop through the device size names
+.display-devices-loop (@ddl, @ddi:1) when (@ddi =< @ddl) {
+  @dds: extract(@devices, @ddi);
+  @dbp: extract(@breakpoints, @ddi);
+  .display-breakpoint-loop(@dds);
+  .display-devices-loop(@ddl, (@ddi + 1));
+}
+.display-devices-loop(length(@devices));
+.display-type-loop(length(@types), true);

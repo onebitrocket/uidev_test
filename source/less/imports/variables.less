@@ -1,0 +1,67 @@
+// base font size
+@root-font-size: 10;
+// html font size
+@html-font-size : percentage( @root-font-size / 16 );
+
+// body font size and line height
+@body-font-size : 18;
+@body-line-height : 24;
+
+// font families
+.font-family(@font) { font-family:  @font,  @font-fallbacks; }
+@font-fallbacks: Arial, Helvetica, Verdana, sans-serif;
+@body-font: 'Nunito';
+@body-font-class: body-font;
+@code-font : 'Courier New', Courier, Monaco, monospace;
+
+// colors
+@primary-color: #149CD0;
+
+@black: #000000;
+@dark-grey: lighten(@black, 20%);
+@med-grey: lighten(@black, 40%);
+@grey: lighten(@black, 60%);
+@light-grey: lighten(@black, 80%);
+@e6-grey: lighten(@black, 90%);
+@f2-grey: lighten(@black, 95%);
+@white: #ffffff;
+
+
+// body font colors
+@body-font-color: @dark-grey;
+@body-background-color: @white;
+
+// link colors
+@link-color: @primary-color;
+@link-hover: inherit;
+
+// structure heights
+@header-height: 100;
+@header-logo-height: 100;
+
+// base url paths
+@images: '/images/';
+@ui: '/images/ui/';
+@datapath: '../svgs/';
+
+// Structure variables
+// required max widths
+@maxwidths: 768,1024,1280;
+
+// number of columns
+@columns: 12;
+
+// gutter in rems
+@column-gutter: 15;
+
+// column types
+@types: width, push, pull, offset;
+
+// display types
+@displaytypes: block, inline, inline-block, none;
+
+// breakpoint class names
+@devices: 320,480,600,768,1024;
+
+// Required Breakpoints
+@breakpoints: 320,480,600,768,1024;

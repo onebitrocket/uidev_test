@@ -1,0 +1,19 @@
+// media queries
+.media(@min, @style) {
+  @media screen
+  and (min-width: ~'@{min}px')
+  {@style();}
+}
+.media(@min, @max, @style) when not (@max = false) and not (@min = 0){
+  @calcmax: (@max - 1);
+  @media screen
+  and (min-width: ~'@{min}px')
+  and (max-width: ~'@{calcmax}px')
+  {@style();}
+}
+.media(@min, @max, @style) when not (@max = false) and (@min = 0) {
+  @calcmax: (@max - 1);
+  @media screen
+  and (max-width: ~'@{calcmax}px')
+  {@style();}
+}

@@ -1,0 +1,46 @@
+{
+  "name": "my-personal-self",
+  "description": "UI exercise ==============================",
+  "main": "gulpfile.js",
+  "authors": [
+    "Matt Tunney <mtunney@me.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/onebitrocket/uidev_test",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "respond": "respondJs#^1.4.2",
+    "html5shiv": "^3.7.3",
+    "jquery": "jQuery#1.11.3"
+  },
+  "overrides": {
+    "respondJS": {
+      "main": [
+        "src/respond.js"
+      ],
+      "dependencies": {}
+    },
+    "jquery": {
+      "main": [
+        "dist/jquery.js"
+      ],
+      "dependencies": {}
+    }
+  },
+  "group": {
+    "fallback": [
+      "html5shiv",
+      "respondJS"
+    ],
+    "jquery": [
+      "jquery"
+    ]
+  }
+}

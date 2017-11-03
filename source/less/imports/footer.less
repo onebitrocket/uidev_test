@@ -1,0 +1,20 @@
+// FOOTER //
+.footer {
+  .textcenter();
+  .font-classes(14,18);
+  .container {
+    .rems(margin-top, 20);
+    .rems(margin-bottom, 20);
+    .media(1024, {
+      .rems(margin-top, 20);
+      .rems(margin-bottom, 20);
+    });
+  }
+  a {
+    &:hover {
+      text-decoration: underline;
+      color:@med-grey
+    }
+  }
+
+}
