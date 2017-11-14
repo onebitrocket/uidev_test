@@ -135,6 +135,14 @@ gulp.task('html', function() {
     .pipe(gulp.dest(build))
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////
+//  SERVER FILES
+//////////////////////////////////////////////////////////////////////////////////////////
+gulp.task('serverfiles', function() {
+  return gulp.src(source + '**/.htaccess')
+    .pipe($.plumber(plumberErrorHandler))
+    .pipe(gulp.dest(build))
+});
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //  IMAGES
@@ -167,6 +175,7 @@ gulp.task('watch', ['tasks'], function() {
   gulp.watch(source + 'less/**/*.less', ['less']);
   gulp.watch(source + 'js/**/*.js', ['js']);
   gulp.watch(source + '**/*.+(html)', ['html']);
+  gulp.watch(source + '**/.htaccess', ['serverfiles']);
   gulp.watch(source + 'images/**/*.+(png|jpg|jpeg|gif)', ['images']);
   gulp.watch(source + 'svgs/**/*.+(svg)', ['sprites']);
 });
@@ -174,7 +183,7 @@ gulp.task('watch', ['tasks'], function() {
 //////////////////////////////////////////////////////////////////////////////////////////
 //  TASKS
 //////////////////////////////////////////////////////////////////////////////////////////
-gulp.task('tasks', ['js','less','html','images','sprites'], function() {
+gulp.task('tasks', ['js','less','html','serverfiles', 'images','sprites'], function() {
   console.log('gulp build tasks done');
 });
 
