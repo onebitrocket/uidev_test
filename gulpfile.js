@@ -50,19 +50,6 @@ gulp.task('js', function () {
   }))
   .pipe(gulp.dest(build  + 'js'))
 
-  // fallback vendor head js
-  gulp.src('./bower.json')
-  .pipe($.plumber(plumberErrorHandler))
-  .pipe($.mainBowerFiles('**/*.js', {
-    includeDev: 'exclusive',
-    group: 'jquery'
-  }))
-  .pipe($.concat('jquery.js'))
-  .pipe($.uglify())
-  .pipe($.rename({
-    suffix: ".min",
-  }))
-  .pipe(gulp.dest(build  + 'js'))
 
   return gulp.src([source + 'js/**/' + mainJsFile + '.js'])
   .pipe($.plumber(plumberErrorHandler))
