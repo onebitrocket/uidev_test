@@ -151,6 +151,9 @@ gulp.task('images', function() {
 
   return gulp.src(source + 'images/**/*.+(png|jpg|jpeg|gif)')
     .pipe($.plumber(plumberErrorHandler))
+    .pipe($.tinypngCompress({
+      key: 'XDyDrItF64CFsDk0-NpE0BMMho0FUENH',
+    }))
     .pipe(gulp.dest(build + 'images'))
 });
 
@@ -162,6 +165,9 @@ gulp.task('sprites', function() {
   return gulp.src(source + 'svgs/**/*.svg')
   .pipe($.plumber(plumberErrorHandler))
   .pipe($.svg2png())
+  .pipe($.tinypngCompress({
+    key: 'XDyDrItF64CFsDk0-NpE0BMMho0FUENH',
+  }))
   .pipe($.rename({
     extname: '.png'
   }))
