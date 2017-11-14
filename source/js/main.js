@@ -93,9 +93,45 @@
  }
 iconsFallback();
 
+function callModalJs(triggerEl) {
+   "use strict";
+    var modal = triggerEl.id,
+      modalActiveClass = 'js-modal-active',
+      modalInner = document.getElementById('modalInner'),
+      modalBg = document.getElementById('modalBg') ;
+
+  //  create the background element
+  var newModalbg = document.createElement("div");
+    newModalbg.id = "modalBg";
+    newModalbg.setAttribute("class", "modal-bg");
 
 
+  // load the content
+  function loadJSON(url, callback){
 
+    var xhr = new XMLHttpRequest();
 
-
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState == 4 && xhr.status == 200){
+        callback(xhr.responseText);
       }
+    };
+
+    xhr.open('GET', url, true);
+    xhr.send();
+  }
+
+  // show the modal
+  document.body.classList.toggle(modalActiveClass);
+
+  if(modal !== 'modalClose') {
+    document.body.appendChild(newModalbg);
+    loadJSON('/modals/' + modal, function(data){
+      modalInner.innerHTML = data;
+    });
+  } else {
+    modalInner.innerHTML = '';
+    modalBg.parentNode.removeChild(modalBg);
+  }
+
+}
