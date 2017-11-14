@@ -126,7 +126,7 @@ function callModalJs(triggerEl) {
 
   if(modal !== 'modalClose') {
     document.body.appendChild(newModalbg);
-    loadJSON('/modals/' + modal, function(data){
+    loadJSON('/modals/' + modal + '.html', function(data){
       modalInner.innerHTML = data;
     });
   } else {
